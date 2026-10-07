@@ -3,13 +3,13 @@
     <channel>
         <title>CartGenerator</title>
         <item>
-            <title>0.5.3</title>
-            <pubDate>Wed, 07 Oct 2026 15:02:16 +0900</pubDate>
-            <sparkle:version>0.5.3</sparkle:version>
-            <sparkle:shortVersionString>0.5.3</sparkle:shortVersionString>
+            <title>0.5.4</title>
+            <pubDate>Thu, 08 Oct 2026 00:37:28 +0900</pubDate>
+            <sparkle:version>0.5.4</sparkle:version>
+            <sparkle:shortVersionString>0.5.4</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[# CartGenerator 0.5.3 macOS Hotfix
+            <description sparkle:format="markdown"><![CDATA[# CartGenerator 0.5.4 macOS Hotfix
 
 Release date: 2026-10-07
 Platform: macOS arm64
@@ -17,59 +17,43 @@ Distribution: ad-hoc-signed direct-download DMG (not notarized)
 
 ## Artifact
 
-- `releases/CartGenerator-0.5.3-macOS-arm64.dmg`
-- Size: 256 MB
-- SHA-256: `12832ef68a6d982bcb024671d364682e1b5a42c3896baf3356b40c82c0ef6f22`
+- `releases/CartGenerator-0.5.4-macOS-arm64.dmg`
+- Size: 259 MB
+- SHA-256: `22ba8489639740b98683687c8cb4a123d709d7a4135e5043ac7e6693cfc92151`
 
-## Step 3 fixes
+## Workflow and UI fixes
 
-- Progress, result cards, filter counts, and table counts now use the actual
-  number of included production requests instead of the 18-row preview fixture.
-- A 73-item job at 18 completed items now displays `18 / 73` and approximately
-  24.7%, rather than filling the progress bar.
-- Result-table vertical and horizontal scroll positions are retained when the
-  next item result refreshes the Step 3 UI.
-- Starting a new run still resets the result table to the top.
-- The unexported-result warning remains as a data-loss safeguard for rerun and
-  destructive navigation, but its native dialog now wraps and centers content
-  without the oversized icon/text columns or clipped message.
+- Step 2 table scroll is retained when thumbnail completion refreshes the UI.
+- Step 3 result-card filters remain selected while new item results arrive.
+- Hidden native compatibility buttons no longer detach into separate macOS windows.
+- CartGenerator reclaims foreground focus after launching or restarting Chromium.
+- Normal completion navigates Chromium to the verified cart page, matching the legacy workflow.
+- Internal `no_match` result text is displayed as `該当商品なし`, with other common statuses localized.
+- Rerunning from Step 2 now uses a combined confirmation for unexported result disposal and cart clearing.
+- After consent, a non-empty cart is cleared automatically and processing resumes; first-run cart waits still expose a visible `カートを空にして開始` action.
 
 ## Verification performed
 
-- 227 Python tests passed.
-- 6 Cloudflare Worker tests passed.
-- Python compilation and source diff checks passed.
-- Real Chromium local-HTML QA verified a 73-row production state, `18 / 73`
-  progress, 24.7% result ratio, scroll retention across a result update, and
-  scroll reset on a new run.
-- Confirmation-dialog rendering was verified at 430x133 pixels with wrapped,
-  centered text and centered buttons.
-- No live cart mutation was performed for this UI hotfix.
+- 235 Python tests and 6 Worker tests passed.
+- Python compilation and diff checks passed.
+- Real Chromium local-HTML QA verified Step 2 scroll `620 -> 620`, Step 3 filter persistence across updates, and the cart-clear action state.
+- The packaged app passed both direct-bundle and read-only mounted-DMG Cocoa startup/shutdown smoke checks with isolated Application Data.
+- No live cart mutation was performed for this hotfix.
 
 ## Installation
 
-1. Use Help -> Check for Updates in CartGenerator 0.5.2, or download the DMG.
-2. If using the DMG, drag `CartGenerator.app` to `Applications` and replace the
-   previous version.
-3. For the non-notarized direct build, Control-click the app and choose **Open**
-   if macOS requests confirmation.
+Use Help -> Check for Updates in CartGenerator 0.5.3, or install the DMG over the previous version.
 
 ## Source archive
 
-- `releases/CartGenerator-0.5.3-source.tar.gz`
-- SHA-256: `65cd40826a113873e1b11852e554591a5896c12dfb3e3b38eb3d0c269b0b7547`
-
-The archive excludes Git internals, virtual environments, generated binaries,
-release artifacts, release-note metadata, diagnostics, local environment files,
-and caches.
+- `releases/CartGenerator-0.5.4-source.tar.gz`
+- SHA-256: `6c9f4f4c05c4dbc83d8bf352bfb9a87598db6b0aca7b9dca3a27c836fe700500`
 
 ## Automatic updates
 
-The EdDSA-signed Sparkle feed and update ZIP are published from
-`52274b/CartGenerator-Releases`. After publication, CartGenerator 0.5.2 will be
-offered this 0.5.3 UI hotfix.
+After publication, the signed Sparkle feed will offer 0.5.4 to 0.5.3.
 ]]></description>
-            <enclosure url="https://github.com/52274b/CartGenerator-Releases/releases/download/v0.5.3/CartGenerator-0.5.3-macOS-arm64.zip" length="237916852" type="application/octet-stream" sparkle:edSignature="RoZQ+SVO+KH6k6we1eD0vXeJGQZ+HzfJdcD6SwYpa0h1yqdXIIfpKAJhViFUuehzbiaDoTbULZ1PdP2XSsu1Dw=="/>
+            <enclosure url="https://github.com/52274b/CartGenerator-Releases/releases/download/v0.5.4/CartGenerator-0.5.4-macOS-arm64.zip" length="237920269" type="application/octet-stream" sparkle:edSignature="ymGPsegsLECXn7czHSoOSB0xxptUbDlzX76xG60BuKqNeoweU/vpauWkP3CM1LX+kslpYX1RDTUggrufkBPNCw=="/>
         </item>
     </channel>
 </rss>
