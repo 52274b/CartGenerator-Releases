@@ -3,13 +3,13 @@
     <channel>
         <title>CartGenerator</title>
         <item>
-            <title>0.5.2</title>
-            <pubDate>Wed, 07 Oct 2026 13:48:04 +0900</pubDate>
-            <sparkle:version>0.5.2</sparkle:version>
-            <sparkle:shortVersionString>0.5.2</sparkle:shortVersionString>
+            <title>0.5.3</title>
+            <pubDate>Wed, 07 Oct 2026 15:02:16 +0900</pubDate>
+            <sparkle:version>0.5.3</sparkle:version>
+            <sparkle:shortVersionString>0.5.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[# CartGenerator 0.5.2 macOS Hotfix
+            <description sparkle:format="markdown"><![CDATA[# CartGenerator 0.5.3 macOS Hotfix
 
 Release date: 2026-10-07
 Platform: macOS arm64
@@ -17,47 +17,47 @@ Distribution: ad-hoc-signed direct-download DMG (not notarized)
 
 ## Artifact
 
-- `releases/CartGenerator-0.5.2-macOS-arm64.dmg`
-- Size: 258 MB
-- SHA-256: `30a13e82a53c29500d2a4967b28cf51fe680bdb85c3b58613b77baf0375aa990`
+- `releases/CartGenerator-0.5.3-macOS-arm64.dmg`
+- Size: 256 MB
+- SHA-256: `12832ef68a6d982bcb024671d364682e1b5a42c3896baf3356b40c82c0ef6f22`
 
-## Critical crash fix
+## Step 3 fixes
 
-- Fixed a native crash that could occur immediately after starting cart processing.
-- Playwright synchronous browser operations now run on one persistent Python-owned thread for the full browser session.
-- This prevents its greenlet runtime from being reused across separate Qt callback thread states.
-- Browser startup, job creation, cart inspection, item processing, pause/resume, recovery, and shutdown now share the same serialized runtime owner.
-- Cart planning and TargetSite interaction rules are unchanged.
-
-## Recovery after the 0.5.1 crash
-
-0.5.1 persisted recovery state before the crash. After installing 0.5.2, inspect the
-current TargetSite cart before selecting whether to retry or skip the interrupted
-item. Do not assume an interrupted cart operation failed solely because the app
-closed.
-
-## Installation
-
-1. Open the DMG.
-2. Drag `CartGenerator.app` to `Applications`, replacing 0.5.1 if prompted.
-3. Because this direct-download build is not Apple-notarized, Control-click the
-   app, choose **Open**, and confirm the warning on first launch.
-4. Existing CartGenerator application data and the dedicated Chromium profile
-   are retained.
+- Progress, result cards, filter counts, and table counts now use the actual
+  number of included production requests instead of the 18-row preview fixture.
+- A 73-item job at 18 completed items now displays `18 / 73` and approximately
+  24.7%, rather than filling the progress bar.
+- Result-table vertical and horizontal scroll positions are retained when the
+  next item result refreshes the Step 3 UI.
+- Starting a new run still resets the result table to the top.
+- The unexported-result warning remains as a data-loss safeguard for rerun and
+  destructive navigation, but its native dialog now wraps and centers content
+  without the oversized icon/text columns or clipped message.
 
 ## Verification performed
 
-- 225 Python tests passed, including persistent-runtime ownership regression tests.
+- 227 Python tests passed.
 - 6 Cloudflare Worker tests passed.
 - Python compilation and source diff checks passed.
-- Real Playwright Chromium was exercised across four separate calls on one
-  persistent Python thread using local HTML only.
-- No live cart mutation was performed as part of hotfix verification.
+- Real Chromium local-HTML QA verified a 73-row production state, `18 / 73`
+  progress, 24.7% result ratio, scroll retention across a result update, and
+  scroll reset on a new run.
+- Confirmation-dialog rendering was verified at 430x133 pixels with wrapped,
+  centered text and centered buttons.
+- No live cart mutation was performed for this UI hotfix.
+
+## Installation
+
+1. Use Help -> Check for Updates in CartGenerator 0.5.2, or download the DMG.
+2. If using the DMG, drag `CartGenerator.app` to `Applications` and replace the
+   previous version.
+3. For the non-notarized direct build, Control-click the app and choose **Open**
+   if macOS requests confirmation.
 
 ## Source archive
 
-- `releases/CartGenerator-0.5.2-source.tar.gz`
-- SHA-256: `8a8c992281083190e0356eb7d0ee276f504c8f0d5e6eda101347dabea56c8d16`
+- `releases/CartGenerator-0.5.3-source.tar.gz`
+- SHA-256: `65cd40826a113873e1b11852e554591a5896c12dfb3e3b38eb3d0c269b0b7547`
 
 The archive excludes Git internals, virtual environments, generated binaries,
 release artifacts, release-note metadata, diagnostics, local environment files,
@@ -66,10 +66,10 @@ and caches.
 ## Automatic updates
 
 The EdDSA-signed Sparkle feed and update ZIP are published from
-`52274b/CartGenerator-Releases`. CartGenerator 0.5.1 will be offered this 0.5.2
-hotfix after the assets and signed appcast are published.
+`52274b/CartGenerator-Releases`. After publication, CartGenerator 0.5.2 will be
+offered this 0.5.3 UI hotfix.
 ]]></description>
-            <enclosure url="https://github.com/52274b/CartGenerator-Releases/releases/download/v0.5.2/CartGenerator-0.5.2-macOS-arm64.zip" length="237916000" type="application/octet-stream" sparkle:edSignature="pX40UQzW/lVSAeokmgyEdLRSxFejyoo1deMA/ervMG7o3DG6CXN0bxjefZ+Ix/cbRZIy3IqAhwQUn3oTCdSTDA=="/>
+            <enclosure url="https://github.com/52274b/CartGenerator-Releases/releases/download/v0.5.3/CartGenerator-0.5.3-macOS-arm64.zip" length="237916852" type="application/octet-stream" sparkle:edSignature="RoZQ+SVO+KH6k6we1eD0vXeJGQZ+HzfJdcD6SwYpa0h1yqdXIIfpKAJhViFUuehzbiaDoTbULZ1PdP2XSsu1Dw=="/>
         </item>
     </channel>
 </rss>
