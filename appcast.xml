@@ -1,0 +1,117 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>CartGenerator</title>
+        <item>
+            <title>0.5.1</title>
+            <pubDate>Wed, 07 Oct 2026 11:11:28 +0900</pubDate>
+            <sparkle:version>0.5.1</sparkle:version>
+            <sparkle:shortVersionString>0.5.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[# CartGenerator 0.5.1 macOS Release
+
+Release date: 2026-10-07
+Platform: macOS arm64
+Distribution: ad-hoc-signed direct-download DMG (not notarized)
+
+## Artifact
+
+- `releases/CartGenerator-0.5.1-macOS-arm64.dmg`
+- Size: 258 MB
+- SHA-256: `c1cced5ecdacab013d8464908430521ed6d24bd6f250ebc0f23809da3818c482`
+
+## Main changes
+
+- The approved Web preview is now the actual product UI through Qt WebEngine.
+- Python remains the source of truth for file input, validation, worker state, job execution, Recovery, results, and XLSX export.
+- QWebChannel provides an allow-listed JSON action/state contract.
+- The former native Qt wizard remains available as a temporary fallback with `CART_GENERATOR_NATIVE_UI=1`.
+- The approved application icon is included in Finder, Dock, DMG, and update-package assets.
+- macOS is the first supported release platform for 0.5.1. Windows packaging remains deferred.
+
+## Security
+
+- Product UI is loaded from bundled local files.
+- External top-level navigation is rejected.
+- Remote access from local content is disabled.
+- A restrictive CSP disables network connections, objects, frames, and forms.
+- Only allow-listed bridge actions are exposed to JavaScript.
+- Credentials and signing keys are never exposed to the Web UI.
+
+## Installation
+
+1. Open the DMG.
+2. Drag `CartGenerator.app` to `Applications`.
+3. Because this build is unsigned for direct distribution, first launch may require Control-clicking the app, selecting Open, and confirming.
+4. The app downloads its pinned Playwright Chromium revision on first setup; Chromium is not bundled in the DMG.
+
+## Verification performed
+
+- 222 Python tests passed.
+- 6 Cloudflare Worker tests passed.
+- Python compilation passed.
+- JavaScript syntax validation passed.
+- Qt WebEngine and QWebChannel imports passed.
+- Web product UI startup, state rendering, STEP1 file load, STEP1-to-STEP2 bridge navigation, and clean shutdown passed with isolated application data.
+- PyInstaller app build passed.
+- QtWebEngine helper and resources are bundled.
+- App version metadata is 0.5.1.
+- App bundle deep/strict signature verification passed after ad-hoc signing.
+- DMG creation and `hdiutil verify` passed.
+- Mounted-DMG app startup/shutdown returned exit code 0.
+- Mounted app signature remained valid after launch.
+
+- Offline product-UI E2E passed: mixed CSV/XML input, STEP2 edits, STEP3 result state, Web export modal, Python XLSX save, and clean shutdown.
+- A real first-run Chromium download completed in isolated Application Data. Future setup uses `--no-shell`, avoiding the unused 94.3 MiB headless-shell download.
+- Recovery/result Web rendering now falls back to persisted `ResultSnapshot` rows.
+- Qt WebEngine renderer termination reloads once and then falls back to a native error message.
+- Unused Qt frameworks/QML modules are pruned after build; app size was reduced from about 683 MB to 616 MB and DMG size from about 275 MB to 250 MB.
+
+## Not performed
+
+- No real-user Recovery choice was selected.
+- No real cart was cleared, resumed, or modified.
+- Cloudflare/R2 deployment and production signing-key operations were not performed.
+- Windows build and installer QA were not performed for 0.5.1.
+- Notarization and Developer ID signing were not performed.
+
+## Gatekeeper verification
+
+A quarantine-tagged copy was assessed with `spctl` and was rejected with exit
+code 3, as expected for this ad-hoc-signed, non-notarized direct-distribution
+build. The app bundle's internal strict signature remains valid.
+
+First launch procedure:
+
+1. Drag `CartGenerator.app` to `/Applications`.
+2. Control-click the app and choose **Open**.
+3. Confirm **Open** in the macOS warning dialog.
+4. If macOS does not offer Open, go to **System Settings → Privacy & Security**
+   and allow CartGenerator, then launch it again.
+
+Do not instruct users to disable Gatekeeper globally or remove quarantine from
+unrelated files.
+
+## Source archive
+
+- `releases/CartGenerator-0.5.1-source.tar.gz`
+- SHA-256: `9b08a1311c229b360892db86ed596ed7cffc250700a54b287552dcf2741be8a3`
+
+The archive excludes Git internals, virtual environments, generated binaries,
+release artifacts, diagnostics, local environment files, and caches.
+
+## Automatic updates
+
+CartGenerator uses Sparkle 2.9.6 with an EdDSA-signed appcast and update ZIP
+hosted in a public GitHub release-only repository. The final build embeds
+`SUFeedURL` and `SUPublicEDKey`, enables automatic checks/downloads, and retains
+a Help-menu command for manual checks.
+
+The signed update feed is published from `52274b/CartGenerator-Releases`.
+Cloudflare R2 is not used for application updates.
+]]></description>
+            <enclosure url="https://github.com/52274b/CartGenerator-Releases/releases/download/v0.5.1/CartGenerator-0.5.1-macOS-arm64.zip" length="237911654" type="application/octet-stream" sparkle:edSignature="J6Bdp6ikVzPZPIeYUOAowmv89Psq8qHGELxN4wHDmL3xsViXX++8Q8mTc2Coi0eZMAlrMT/KBe46t5mHt9GbCA=="/>
+        </item>
+    </channel>
+</rss>
