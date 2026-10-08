@@ -4,7 +4,7 @@
         <title>CartGenerator</title>
         <item>
             <title>0.5.6</title>
-            <pubDate>Thu, 08 Oct 2026 14:58:24 +0900</pubDate>
+            <pubDate>Thu, 08 Oct 2026 15:10:09 +0900</pubDate>
             <sparkle:version>0.5.6</sparkle:version>
             <sparkle:shortVersionString>0.5.6</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
@@ -21,7 +21,7 @@
 
 - `releases/CartGenerator-0.5.6-macOS-arm64.dmg`
 - サイズ：257 MB
-- SHA-256: `4951b2d26728d2bc01d8faf70637e6c6aca9cf0a2fb608923704aa2a2f71728c`
+- SHA-256: `11e22caecd94770bf97afa37dab6a0579ee623d7d8e946f73b46f3e486857ba3`
 
 ## 主な変更点
 
@@ -44,16 +44,11 @@
 
 以前のCartGeneratorから「ヘルプ」→「更新を確認…」を選択するか、DMGを使って既存バージョンへ上書きインストールしてください。
 
-## ソースアーカイブ
-
-- `releases/CartGenerator-0.5.6-source.tar.gz`
-- SHA-256: `ade5305d5b3d85cb2d46a4cf2a26cce89018bd5c8d12df987f7364ba6a067022`
-
 ## 自動アップデート
 
 公開後は、署名済みのSparkle更新フィードから以前のバージョンへ0.5.6が配信されます。
 ]]></description>
-            <enclosure url="https://github.com/52274b/CartGenerator-Releases/releases/download/v0.5.6/CartGenerator-0.5.6-macOS-arm64.zip" length="237967979" type="application/octet-stream" sparkle:edSignature="lj90/geSFIG+RS1a98S1DapDd0kW0t288l99fiKrelWpZYP53OFqDhuLeaW7Oy/N6SNdlFhSRylMjPxRx+DHBQ=="/>
+            <enclosure url="https://github.com/52274b/CartGenerator-Releases/releases/download/v0.5.6/CartGenerator-0.5.6-macOS-arm64.zip" length="237967979" type="application/octet-stream" sparkle:edSignature="gpABtgZCZSY+79RFhBwW1AukjPD1O71b1fEZpeWrJPUTxCK49Tq1M8ypg3I6u42cs1axotZGaGbZ5ZWXsVV9CA=="/>
         </item>
     </channel>
 </rss>
