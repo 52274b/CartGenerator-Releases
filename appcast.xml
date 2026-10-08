@@ -4,53 +4,56 @@
         <title>CartGenerator</title>
         <item>
             <title>0.5.6</title>
-            <pubDate>Thu, 08 Oct 2026 14:41:15 +0900</pubDate>
+            <pubDate>Thu, 08 Oct 2026 14:58:24 +0900</pubDate>
             <sparkle:version>0.5.6</sparkle:version>
             <sparkle:shortVersionString>0.5.6</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[# CartGenerator 0.5.6 macOS Maintenance Release
+            <description sparkle:format="markdown"><![CDATA[# CartGenerator 0.5.6
 
-Release date: 2026-10-08
-Platform: macOS arm64
-Distribution: ad-hoc-signed direct-download DMG (not notarized)
+リリース日：2026-10-08
 
-## Artifact
+対象環境：macOS（Apple Silicon）
+
+配布形式：直接ダウンロード用DMG（ad-hoc署名、未公証）
+
+## 配布ファイル
 
 - `releases/CartGenerator-0.5.6-macOS-arm64.dmg`
-- Size: 257 MB
+- サイズ：257 MB
 - SHA-256: `11e22caecd94770bf97afa37dab6a0579ee623d7d8e946f73b46f3e486857ba3`
 
-## Main changes
+## 主な変更点
 
-- Fixed hidden native compatibility controls appearing as separate macOS windows over the Web UI.
-- Added a clear Step 2 route back to the previous results, and enabled `この内容で再試行` only after the request content has actually changed.
-- Reworked retry preparation to start with a new empty cart session instead of rapidly deleting cart rows one by one.
-- Added explicit pending feedback while pause or stop waits for the current item to finish safely.
-- Simplified successful, partial-quantity, and sold-out result messages.
-- Improved part-thumbnail loading, unavailable-state display, search precision, and local rendering behavior.
-- Replaced the macOS application icon with the approved CartGenerator artwork.
+- Web UIの上に、互換用の非表示ボタンが独立したmacOSウィンドウとして表示される問題を修正しました。
+- Step 2から前回の投入結果へ戻れるようにしました。`この内容で再試行`は、投入内容を変更した場合のみ選択できます。
+- 再試行時のカート準備を見直し、商品を1件ずつ削除する方式から、新しい空のカートセッションで開始する方式へ変更しました。
+- 一時停止または終了を要求した際、現在の商品処理が安全に完了するまで「一時停止待ち」「終了待ち」と表示するようにしました。
+- 投入完了、部分投入、在庫切れ時の結果メッセージを簡潔で分かりやすい表現に変更しました。
+- パーツ画像の読み込み表示、取得できない場合の表示、検索精度、ローカル描画処理を改善しました。
+- macOS版のアプリアイコンを新しいCartGeneratorアイコンへ変更しました。
 
-## Verification performed
+## 確認内容
 
-- The complete Python and Cloudflare Worker test suites are run by the release build.
-- Python compilation, Git diff validation, application signing, DMG verification, Sparkle signing, release metadata, and packaged-resource checks are run by the release build.
-- The real cart-session reset is intentionally not executed during automated testing because it would abandon a live cart. Perform one controlled live retry before public distribution.
+- Pythonテスト257件とCloudflare Workerテスト6件が成功しました。
+- Pythonコンパイル、差分検査、アプリ署名、DMG検証、Sparkle署名、リリース情報、同梱ファイルの検査が成功しました。
+- 読み取り専用でマウントしたDMGから、アプリの起動と正常終了を確認しました。
+- 実際のカートセッション初期化は、既存カートを破棄するため自動テストの対象外です。一般公開前に管理された条件で再試行を1回確認してください。
 
-## Installation
+## インストール方法
 
-Use Help -> Check for Updates in an earlier CartGenerator version, or install the DMG over the previous version.
+以前のCartGeneratorから「ヘルプ」→「更新を確認…」を選択するか、DMGを使って既存バージョンへ上書きインストールしてください。
 
-## Source archive
+## ソースアーカイブ
 
 - `releases/CartGenerator-0.5.6-source.tar.gz`
 - SHA-256: `ade5305d5b3d85cb2d46a4cf2a26cce89018bd5c8d12df987f7364ba6a067022`
 
-## Automatic updates
+## 自動アップデート
 
-After publication, the signed Sparkle feed will offer 0.5.6 to earlier installations.
+公開後は、署名済みのSparkle更新フィードから以前のバージョンへ0.5.6が配信されます。
 ]]></description>
-            <enclosure url="https://github.com/52274b/CartGenerator-Releases/releases/download/v0.5.6/CartGenerator-0.5.6-macOS-arm64.zip" length="237967979" type="application/octet-stream" sparkle:edSignature="HrBpCUbYzaqlwiL11EISEhLvp76nxUIT14Ts6en/vKsjDEavEBCmahG3BcEx4UdCcppSosY+9RN2N21wnYhiCg=="/>
+            <enclosure url="https://github.com/52274b/CartGenerator-Releases/releases/download/v0.5.6/CartGenerator-0.5.6-macOS-arm64.zip" length="237967979" type="application/octet-stream" sparkle:edSignature="lj90/geSFIG+RS1a98S1DapDd0kW0t288l99fiKrelWpZYP53OFqDhuLeaW7Oy/N6SNdlFhSRylMjPxRx+DHBQ=="/>
         </item>
     </channel>
 </rss>
