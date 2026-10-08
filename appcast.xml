@@ -3,13 +3,13 @@
     <channel>
         <title>CartGenerator</title>
         <item>
-            <title>0.5.5</title>
-            <pubDate>Thu, 08 Oct 2026 09:18:04 +0900</pubDate>
-            <sparkle:version>0.5.5</sparkle:version>
-            <sparkle:shortVersionString>0.5.5</sparkle:shortVersionString>
+            <title>0.5.6</title>
+            <pubDate>Thu, 08 Oct 2026 14:41:15 +0900</pubDate>
+            <sparkle:version>0.5.6</sparkle:version>
+            <sparkle:shortVersionString>0.5.6</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[# CartGenerator 0.5.5 macOS Maintenance Release
+            <description sparkle:format="markdown"><![CDATA[# CartGenerator 0.5.6 macOS Maintenance Release
 
 Release date: 2026-10-08
 Platform: macOS arm64
@@ -17,44 +17,40 @@ Distribution: ad-hoc-signed direct-download DMG (not notarized)
 
 ## Artifact
 
-- `releases/CartGenerator-0.5.5-macOS-arm64.dmg`
-- Size: 258 MB
-- SHA-256: `fc0bb5a7eba7b99816034f03901f5d60726a79a1c73bf65cbbad2d12ad604330`
+- `releases/CartGenerator-0.5.6-macOS-arm64.dmg`
+- Size: 257 MB
+- SHA-256: `11e22caecd94770bf97afa37dab6a0579ee623d7d8e946f73b46f3e486857ba3`
 
 ## Main changes
 
-- Added clear loading and unavailable states for part thumbnails using normalized Phosphor icons.
-- Exact-color searches now include the target-site color term, preventing valid parts such as 6091 Tan from being discarded by broad search-page limits.
-- Shortened partial-quantity details and distinguished sold-out products from other purchase-planning failures.
-- Added a macOS Qt WebEngine accessibility crash guard for the Qt 6.11 Cocoa accessibility failure observed after an otherwise completed job.
-- Simple confirmations, recovery choices, diagnostic notices, update notices, and generic errors now use standard macOS alerts.
-- Native-alert creation is restricted to an initialized QApplication on its GUI thread.
-
-## Known issue
-
-- In the Web UI, the hidden native `カートを空にする` compatibility button can still appear as a separate small macOS window when an existing non-empty cart enters the cart-wait state. The cart operation remains confirmation-gated, but this visual defect is not fixed in 0.5.5.
+- Fixed hidden native compatibility controls appearing as separate macOS windows over the Web UI.
+- Added a clear Step 2 route back to the previous results, and enabled `この内容で再試行` only after the request content has actually changed.
+- Reworked retry preparation to start with a new empty cart session instead of rapidly deleting cart rows one by one.
+- Added explicit pending feedback while pause or stop waits for the current item to finish safely.
+- Simplified successful, partial-quantity, and sold-out result messages.
+- Improved part-thumbnail loading, unavailable-state display, search precision, and local rendering behavior.
+- Replaced the macOS application icon with the approved CartGenerator artwork.
 
 ## Verification performed
 
-- 252 Python tests passed before release packaging.
-- Python compilation and diff checks passed.
-- AppKit availability and the native destructive-button API were verified without creating controls outside the application lifecycle.
-- No real cart was cleared, resumed, or modified for this release.
+- The complete Python and Cloudflare Worker test suites are run by the release build.
+- Python compilation, Git diff validation, application signing, DMG verification, Sparkle signing, release metadata, and packaged-resource checks are run by the release build.
+- The real cart-session reset is intentionally not executed during automated testing because it would abandon a live cart. Perform one controlled live retry before public distribution.
 
 ## Installation
 
-Use Help -> Check for Updates in CartGenerator 0.5.4, or install the DMG over the previous version.
+Use Help -> Check for Updates in an earlier CartGenerator version, or install the DMG over the previous version.
 
 ## Source archive
 
-- `releases/CartGenerator-0.5.5-source.tar.gz`
-- SHA-256: `70b8c7f01da0ae4ddca6896a9bfa691ebff6eda49282f5a9e8bd51c158164ef5`
+- `releases/CartGenerator-0.5.6-source.tar.gz`
+- SHA-256: `ade5305d5b3d85cb2d46a4cf2a26cce89018bd5c8d12df987f7364ba6a067022`
 
 ## Automatic updates
 
-After publication, the signed Sparkle feed will offer 0.5.5 to earlier installations.
+After publication, the signed Sparkle feed will offer 0.5.6 to earlier installations.
 ]]></description>
-            <enclosure url="https://github.com/52274b/CartGenerator-Releases/releases/download/v0.5.5/CartGenerator-0.5.5-macOS-arm64.zip" length="237927798" type="application/octet-stream" sparkle:edSignature="M0tJyrMEy83i67o+I76hApTji/yCbnXalcrlZfy5P9PEjauZa44V+ZaJeOv7owx4EhR81XJcfO/tesLOysgJBg=="/>
+            <enclosure url="https://github.com/52274b/CartGenerator-Releases/releases/download/v0.5.6/CartGenerator-0.5.6-macOS-arm64.zip" length="237967979" type="application/octet-stream" sparkle:edSignature="HrBpCUbYzaqlwiL11EISEhLvp76nxUIT14Ts6en/vKsjDEavEBCmahG3BcEx4UdCcppSosY+9RN2N21wnYhiCg=="/>
         </item>
     </channel>
 </rss>
